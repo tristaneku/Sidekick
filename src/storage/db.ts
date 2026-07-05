@@ -2,7 +2,7 @@ import { dirname, join } from 'jsr:@std/path@1';
 import { Database } from 'jsr:@db/sqlite@0.13.0';
 import { ensureDir } from 'jsr:@std/fs@1.0.23';
 
-const appPath = () => {
+function getAppPath() {
   const dataPath = join('Sidekick', 'data.db');
 
   const home = Deno.env.get('HOME');
@@ -24,9 +24,9 @@ const appPath = () => {
     default:
       return dataPath;
   }
-};
+}
 
-const path = appPath();
+const path = getAppPath();
 
 await ensureDir(dirname(path));
 const db = new Database(path);
