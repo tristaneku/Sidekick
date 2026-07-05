@@ -1,0 +1,4 @@
+class Sidekick {
+}
+
+export { Sidekick };

@@ -2,7 +2,7 @@ import { db } from '@/storage/db.ts';
 import { z } from 'zod';
 
 class KV<TSchema extends z.ZodObject> {
-  constructor(private readonly path: string, private readonly schema: TSchema) {
+  constructor(readonly path: string, readonly schema: TSchema) {
     db.exec(`
       CREATE TABLE IF NOT EXISTS kv (
         path TEXT NOT NULL,
