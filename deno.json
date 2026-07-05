@@ -1,0 +1,31 @@
+{
+    "tasks": {
+        "dev": "deno run --watch -A src/main.tsx"
+    },
+    "imports": {
+        "@/": "./src/",
+        "path": "jsr:@std/path@1",
+        "sqlite": "jsr:@db/sqlite@0.13.0",
+        "ai": "npm:ai@6.0.146",
+        "zod": "npm:zod@4.3.6",
+        "react": "npm:react@18",
+        "types/react": "npm:@types/react@18",
+        "ink": "jsr:@deno-ink/core"
+    },
+    "lint": {
+        "rules": {
+            "exclude": ["no-import-prefix"]
+        }
+    },
+    "fmt": {
+        "singleQuote": true,
+        "lineWidth": 140
+    },
+    "compilerOptions": {
+        "jsx": "react",
+        "jsxFactory": "React.createElement",
+        "jsxFragmentFactory": "React.Fragment"
+    },
+
+    "unstable": ["kv"]
+}
