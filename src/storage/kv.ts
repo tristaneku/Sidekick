@@ -1,7 +1,7 @@
 import { db } from '@/storage/db.ts';
 import { z } from 'zod';
 
-class kv<TSchema extends z.ZodObject> {
+class KV<TSchema extends z.ZodObject> {
   constructor(private readonly path: string, private readonly schema: TSchema) {
     db.exec(`
       CREATE TABLE IF NOT EXISTS kv (
@@ -56,4 +56,4 @@ class kv<TSchema extends z.ZodObject> {
   }
 }
 
-export { kv };
+export { KV };

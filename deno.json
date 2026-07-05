@@ -4,8 +4,6 @@
     },
     "imports": {
         "@/": "./src/",
-        "path": "jsr:@std/path@1",
-        "sqlite": "jsr:@db/sqlite@0.13.0",
         "ai": "npm:ai@6.0.146",
         "zod": "npm:zod@4.3.6",
         "react": "npm:react@18",
