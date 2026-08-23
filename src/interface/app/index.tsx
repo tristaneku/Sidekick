@@ -10,6 +10,9 @@ export default function Index() {
     case 'onboard':
       return <Onboard />;
 
+    case 'home':
+      return <Onboard />;
+
     default:
       return <Onboard />;
   }

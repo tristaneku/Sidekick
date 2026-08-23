@@ -11,9 +11,17 @@ const CredentialsSchema = z.object({
     key: z.string(),
   })),
 
-  telegramBotToken: z.array(z.object({
+  sip: z.array(z.object({
     name: z.string(),
-    token: z.string(),
+    key: z.object({
+      username: z.string(),
+      password: z.string(),
+    }),
+  })),
+
+  telegramBot: z.array(z.object({
+    name: z.string(),
+    key: z.string(),
   })),
 });
 

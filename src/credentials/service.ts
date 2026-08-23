@@ -4,15 +4,33 @@ import { TCredentials } from '@/credentials/models.ts';
 
 const CredentailsKV = new KV('credentials', CredentialsSchema);
 
-function saveCredential<T extends keyof TCredentials>(type: T, content: TCredentials[T][number]) {
-  const prev = CredentailsKV.get(type) ?? [];
-  const next = [...prev, content] as TCredentials[T];
+function getCredentials(type: keyof TCredentials) {
+  return CredentailsKV.get(type);
+}
+
+function saveCredential<T extends keyof TCredentials>(
+  type: T,
+  name: TCredentials[T][number]['name'],
+  key: TCredentials[T][number]['key'],
+) {
+  const prev = getCredentials(type) ?? [];
+  const same = prev.find((c) => c.name === name);
+
+  if (same) throw new Error('Credential name has to be unique');
+
+  const next = [...prev, { name, key }] as TCredentials[T];
 
   CredentailsKV.save(type, next);
 }
 
-function getCredential(type: keyof TCredentials, name: ) {
-  CredentailsKV.get(type);
+function getCredentialKey(type: keyof TCredentials, name: string) {
+  const credentials = getCredentials(type);
+
+  const credential = credentials?.find((c) => c.name === name);
+
+  if (!credential) throw new Error('Credential not found');
+
+  return credential.key;
 }
 
-export { getCredential, saveCredential };
+export { getCredentialKey, getCredentials, saveCredential };
