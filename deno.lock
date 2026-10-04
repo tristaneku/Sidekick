@@ -1253,16 +1253,24 @@
     "https://deno.land/x/tui@2.1.11/src/view.ts": "77c9dfdb3632f95c2456036c5e30f90cfbbad62cbb4f370cba48b992523aa619"
   },
   "workspace": {
-    "dependencies": [
-      "jsr:@deno-ink/core@*",
-      "npm:@types/pg@^8.23.1",
-      "npm:@types/react@18",
-      "npm:ai@6.0.146",
-      "npm:drizzle-kit@~0.31.11",
-      "npm:drizzle-orm@~0.45.3",
-      "npm:pg@^8.13.1",
-      "npm:react@^19.2.0",
-      "npm:zod@4.3.6"
-    ]
+    "members": {
+      "apps/deamon": {
+        "dependencies": [
+          "npm:@types/pg@^8.23.1",
+          "npm:ai@6.0.146",
+          "npm:drizzle-kit@~0.31.11",
+          "npm:drizzle-orm@~0.45.3",
+          "npm:pg@^8.13.1",
+          "npm:zod@4.3.6"
+        ]
+      },
+      "apps/tui": {
+        "dependencies": [
+          "jsr:@deno-ink/core@*",
+          "npm:@types/react@18",
+          "npm:react@^19.2.0"
+        ]
+      }
+    }
   }
 }

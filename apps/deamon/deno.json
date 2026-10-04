@@ -1,0 +1,19 @@
+{
+    "name": "deamon",
+
+    "exports": "./src/main.ts",
+
+    "tasks": {
+      "dev": "deno run --watch -A src/main.ts"
+    },
+
+    "imports": {
+        "@/": "./src/",
+        "ai": "npm:ai@6.0.146",
+        "zod": "npm:zod@4.3.6",
+        "drizzle-kit": "npm:drizzle-kit@^0.31.11",
+        "drizzle-orm": "npm:drizzle-orm@^0.45.3",
+        "pg": "npm:pg@^8.13.1",
+        "@types/pg": "npm:@types/pg@^8.23.1"
+    }
+}
