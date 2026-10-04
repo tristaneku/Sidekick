@@ -10,12 +10,12 @@
 
     "imports": {
         "@/": "./src/",
-        "ai": "npm:ai@6.0.146",
+        "ai": "npm:ai@7.0.127",
         "zod": "npm:zod@4.3.6",
-        "pg": "npm:pg@^8.13.1",
-        "drizzle-kit": "npm:drizzle-kit@^0.31.11",
-        "drizzle-orm": "npm:drizzle-orm@^0.45.3",
-        "@libsql/client": "npm:@libsql/client@^0.18.0",
-        "@types/pg": "npm:@types/pg@^8.23.1"
+        "pg": "npm:pg@8.13.1",
+        "drizzle-kit": "npm:drizzle-kit@0.31.11",
+        "drizzle-orm": "npm:drizzle-orm@0.45.3",
+        "@libsql/client": "npm:@libsql/client@0.18.0",
+        "@types/pg": "npm:@types/pg@8.23.1"
     }
 }

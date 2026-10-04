@@ -7,10 +7,10 @@ export async function saveCredential<T extends CredentialType>(name: string, typ
     await db.insert(credentials).values({ name, type, value })
 }
 
-export async function getCredential(name: string): Promise<Credential | undefined> {
+export async function getCredential(name: string): Promise<unknown | undefined> {
     const [row] = await db.select().from(credentials).where(eq(credentials.name, name))
 
-    return row as Credential | undefined
+    return row.value
 }
 
 export async function getCredentials(): Promise<Credential[]> {
