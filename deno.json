@@ -2,12 +2,12 @@
     "workspace": ["./apps/deamon", "./apps/tui"],
 
     "tasks": {
-      "deamon:dev": "deno task --filter deamon dev",
-      "deamon:push": "deno task --filter deamon push",
+        "deamon:dev": "deno task --filter deamon dev",
+        "deamon:push": "deno task --filter deamon push",
 
-      "tui:dev": "deno task --filter tui dev",
+        "tui:dev": "deno task --filter tui dev",
 
-      "dev": "deno task deamon:dev & deno task tui:dev"
+        "dev": "deno task deamon:dev & deno task tui:dev"
     },
 
     "lint": {
@@ -18,6 +18,8 @@
 
     "fmt": {
         "singleQuote": true,
-        "lineWidth": 140
+        "lineWidth": 140,
+        "indentWidth": 4,
+        "semiColons": false
     }
 }

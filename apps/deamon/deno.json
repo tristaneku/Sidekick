@@ -4,8 +4,8 @@
     "exports": "./src/main.ts",
 
     "tasks": {
-      "dev": "deno run --watch -A src/main.ts",
-      "push": "deno run -A npm:drizzle-kit push"
+        "dev": "deno run --watch -A src/main.ts",
+        "push": "deno run -A npm:drizzle-kit push"
     },
 
     "imports": {

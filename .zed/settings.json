@@ -7,6 +7,7 @@
                 }
             }
         },
+
         "json-language-server": {
             "settings": {
                 "json": {
@@ -15,6 +16,7 @@
                             "fileMatch": ["deno.json", "deno.jsonc"],
                             "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json"
                         },
+
                         {
                             "fileMatch": ["package.json"],
                             "url": "https://www.schemastore.org/package"
@@ -24,34 +26,26 @@
             }
         }
     },
+
     "languages": {
         "JavaScript": {
-            "language_servers": [
-                "deno",
-                "!typescript-language-server",
-                "!vtsls",
-                "!eslint"
-            ],
+            "language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
             "formatter": "language_server"
         },
+
         "TypeScript": {
-            "language_servers": [
-                "deno",
-                "!typescript-language-server",
-                "!vtsls",
-                "!eslint"
-            ],
+            "language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
             "formatter": "language_server"
         },
+
         "TSX": {
-            "language_servers": [
-                "deno",
-                "!typescript-language-server",
-                "!vtsls",
-                "!eslint"
-            ],
+            "language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
             "formatter": "language_server"
         }
     },
+
+    "format_on_save": "on",
+    "tab_size": 4,
+    "preferred_line_length": 140,
     "file_scan_exclusions": [".devenv", ".git", "devenv.lock", "deno.lock"]
 }

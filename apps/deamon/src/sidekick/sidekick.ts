@@ -1,6 +1,4 @@
-
 export class Sidekick {
-  constructor() {
-
-  }
+    constructor() {
+    }
 }
