@@ -5,6 +5,9 @@ export interface CredentialMap {
     grok: {
         api_token: string
     }
+    vercelAiGateway: {
+        api_key: string
+    }
 }
 
 export type CredentialType = keyof CredentialMap

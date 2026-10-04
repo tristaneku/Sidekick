@@ -20,11 +20,11 @@ export function getAvailableModels(provider: AvailableProviders) {
 }
 
 export async function getLanguageModel(provider: AvailableProviders, model: string, credential: string) {
-    const apiKey = await getCredential(credential)
+    const { api_key } = await getCredential(credential) as { api_key: string }
 
-    if (typeof apiKey !== 'string') {
+    if (typeof api_key !== 'string') {
         throw new Error('Could not fetch api key')
     }
 
-    return getProvider(provider, apiKey)(model)
+    return getProvider(provider, api_key)(model)
 }
