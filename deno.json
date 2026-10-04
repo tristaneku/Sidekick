@@ -1,14 +1,20 @@
 {
     "tasks": {
-        "dev": "deno run --watch -A src/main.tsx"
+      "dev:daemon": "deno run --watch -A src/deamon/main.ts",
+      "dev:tui": "deno run --watch -A src/tui/main.ts",
+      "dev": "deno task dev:daemon & deno task dev:tui"
     },
     "imports": {
         "@/": "./src/",
         "ai": "npm:ai@6.0.146",
         "zod": "npm:zod@4.3.6",
         "react": "npm:react@18",
-        "types/react": "npm:@types/react@18",
-        "ink": "jsr:@deno-ink/core"
+        "ink": "jsr:@deno-ink/core",
+        "drizzle-kit": "npm:drizzle-kit@^0.31.11",
+        "drizzle-orm": "npm:drizzle-orm@^0.45.3",
+        "pg": "npm:pg@^8.13.1",
+        "@types/react": "npm:@types/react@18",
+        "@types/pg": "npm:@types/pg@^8.23.1"
     },
     "lint": {
         "rules": {
@@ -23,7 +29,5 @@
         "jsx": "react",
         "jsxFactory": "React.createElement",
         "jsxFragmentFactory": "React.Fragment"
-    },
-
-    "unstable": ["kv"]
+    }
 }
