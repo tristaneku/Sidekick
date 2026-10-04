@@ -4,16 +4,18 @@
     "exports": "./src/main.ts",
 
     "tasks": {
-      "dev": "deno run --watch -A src/main.ts"
+      "dev": "deno run --watch -A src/main.ts",
+      "push": "deno run -A npm:drizzle-kit push"
     },
 
     "imports": {
         "@/": "./src/",
         "ai": "npm:ai@6.0.146",
         "zod": "npm:zod@4.3.6",
+        "pg": "npm:pg@^8.13.1",
         "drizzle-kit": "npm:drizzle-kit@^0.31.11",
         "drizzle-orm": "npm:drizzle-orm@^0.45.3",
-        "pg": "npm:pg@^8.13.1",
+        "@libsql/client": "npm:@libsql/client@^0.18.0",
         "@types/pg": "npm:@types/pg@^8.23.1"
     }
 }
