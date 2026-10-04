@@ -8,7 +8,7 @@
         "@/": "./src/",
         "ai": "npm:ai@6.0.146",
         "zod": "npm:zod@4.3.6",
-        "react": "npm:react@18",
+        "react": "npm:react@^19.2.0",
         "ink": "jsr:@deno-ink/core",
         "drizzle-kit": "npm:drizzle-kit@^0.31.11",
         "drizzle-orm": "npm:drizzle-orm@^0.45.3",
