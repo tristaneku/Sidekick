@@ -1,9 +1,4 @@
-import { saveCredential } from '@/credentials/service.ts'
 import { Sidekick } from '@/sidekick/sidekick.ts'
-
-await saveCredential('test', 'vercelAiGateway', {
-    api_key: '0',
-})
 
 const uken = new Sidekick('Uken', {
     about: {
@@ -20,10 +15,8 @@ const uken = new Sidekick('Uken', {
     languageModel: {
         credential: 'test',
         provider: 'vercel_ai_gateway',
-        model: '',
+        model: 'inclusionai/ling-3.1-flash',
     },
 
     utilities: [],
 })
-
-await uken.sendMessage()
