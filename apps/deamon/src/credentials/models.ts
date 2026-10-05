@@ -2,9 +2,11 @@ export interface CredentialMap {
     telegram: {
         bot_token: string
     }
+
     grok: {
         api_token: string
     }
+
     vercelAiGateway: {
         api_key: string
     }
