@@ -1,5 +1,5 @@
 import { Bot } from 'npm:grammy@1.46.0'
-import type { TelegramApiPropertries } from '@/utilities/telegram/models.ts'
+import type { TelegramApiPropertries } from '@/channels/telegram/models.ts'
 
 export class TelegramApi {
     bot: Bot
