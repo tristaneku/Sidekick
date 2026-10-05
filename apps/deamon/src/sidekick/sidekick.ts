@@ -2,7 +2,7 @@ import type { SidekickPropetries } from '@/sidekick/models.ts'
 import type { LanguageModelInstance } from '@/ai/models.ts'
 import type { ModelMessage } from 'ai'
 import { getLanguageModel } from '@/ai/service.ts'
-import { generateText } from 'ai'
+import { streamText } from 'ai'
 
 export class Sidekick {
     name: string
@@ -23,7 +23,17 @@ export class Sidekick {
 
         this.languageModel = await getLanguageModel(provider, model, credential)
 
-        await this.sendMessage()
+        await this.sendMessage('Whats up?')
+    }
+
+    private pushMessage(message: ModelMessage) {
+        this.messages.push(message)
+
+        if (!this.propetries.execution.windowContext) return
+
+        if (this.messages.length > this.propetries.execution.windowContext) {
+            this.messages.shift()
+        }
     }
 
     private async triggerResponse() {
@@ -31,16 +41,26 @@ export class Sidekick {
             throw new Error('language model not set')
         }
 
-        const { content } = await generateText({
+        const { textStream, finalStep } = streamText({
             model: this.languageModel,
             messages: this.messages,
         })
 
-        console.log(content)
+        for await (const part of textStream) {
+            console.log(part)
+        }
+
+        const response = (await finalStep).response
+
+        response.messages.forEach((message) => {
+            this.messages.push(message)
+        })
+
+        console.log(this.messages)
     }
 
-    async sendMessage() {
-        this.messages.push({ role: 'user', content: 'Heewuuu, how are you doooin? owo' })
+    async sendMessage(message: string) {
+        this.pushMessage({ role: 'user', content: message })
         await this.triggerResponse()
     }
 }
