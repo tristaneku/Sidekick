@@ -1,5 +1,4 @@
 export const availableUtilities = {
-    'telegram': 'Telegram',
     'memory': 'Memory',
     'skills': 'Skills',
 }

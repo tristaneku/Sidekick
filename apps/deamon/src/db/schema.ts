@@ -5,3 +5,17 @@ export const credentials = sqliteTable('credentials', {
     type: text().notNull(),
     value: text({ mode: 'json' }).notNull(),
 })
+
+export const utilities = sqliteTable('utilities', {
+    name: text().primaryKey(),
+    config: text({ mode: 'json' }),
+})
+
+export const channels = sqliteTable('channels', {
+    name: text().primaryKey(),
+    config: text({ mode: 'json' }),
+})
+
+export const sidekicks = sqliteTable('sidekicks', {
+    name: text().primaryKey(),
+})
