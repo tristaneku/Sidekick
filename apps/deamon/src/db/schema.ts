@@ -1,5 +1,4 @@
-import { primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import { integer } from 'drizzle-orm/sqlite-core/columns/integer'
+import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 export const credentials = sqliteTable('credentials', {
     name: text().primaryKey(),
@@ -9,6 +8,14 @@ export const credentials = sqliteTable('credentials', {
 
 export const sidekicks = sqliteTable('sidekicks', {
     name: text().primaryKey(),
+
+    windowContext: integer().default(50),
+    maxSteps: integer().default(5),
+    maxSubAgents: integer().default(5),
+
+    llmProvider: text(),
+    llmModel: text(),
+    llmCredential: text().references(() => credentials.name, { onDelete: 'set null' }),
 })
 
 export const utilities = sqliteTable('utilities', {

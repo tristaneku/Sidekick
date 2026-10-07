@@ -19,9 +19,9 @@ export class Sidekick {
     }
 
     async initalize() {
-        const { provider, model, credential } = this.propetries.languageModel
+        const { llmProvider, llmModel, llmCredential } = this.propetries
 
-        this.languageModel = await getLanguageModel(provider, model, credential)
+        this.languageModel = await getLanguageModel(llmProvider, llmModel, llmCredential)
 
         await this.sendMessage('Whats up?')
     }
@@ -29,9 +29,9 @@ export class Sidekick {
     private pushMessage(message: ModelMessage) {
         this.messages.push(message)
 
-        if (!this.propetries.execution.windowContext) return
+        if (!this.propetries.windowContext) return
 
-        if (this.messages.length > this.propetries.execution.windowContext) {
+        if (this.messages.length > this.propetries.windowContext) {
             this.messages.shift()
         }
     }

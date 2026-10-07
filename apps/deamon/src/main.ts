@@ -1,22 +1,11 @@
 import { Sidekick } from '@/sidekick/sidekick.ts'
 
 const uken = new Sidekick('Uken', {
-    about: {
-        description: '',
-        personality: '',
-    },
+    windowContext: 5,
+    maxSteps: 5,
+    maxSubAgents: 5,
 
-    execution: {
-        windowContext: 5,
-        maxSteps: 5,
-        maxSubAgents: 5,
-    },
-
-    languageModel: {
-        credential: 'test',
-        provider: 'vercel_ai_gateway',
-        model: 'inclusionai/ling-3.1-flash',
-    },
-
-    utilities: [],
+    llmCredential: 'test',
+    llmProvider: 'vercel_ai_gateway',
+    llmModel: 'inclusionai/ling-3.1-flash',
 })
