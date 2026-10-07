@@ -21,5 +21,7 @@
         "lineWidth": 140,
         "indentWidth": 4,
         "semiColons": false
-    }
+    },
+
+    "nodeModulesDir": "auto"
 }
