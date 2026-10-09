@@ -1,11 +1,9 @@
-import type { Credential, CredentialType } from '@/credentials/models.ts'
-import type { CredentialMap } from '@/credentials/schema.ts'
-import { CredentialMapSchema } from '@/credentials/schema.ts'
 import { credentials } from '@/db/schema.ts'
 import { db } from '@/db/service.ts'
 import { eq } from 'drizzle-orm/sql/expressions'
+import type { Credential } from '@/credentials/schema.ts'
 
-export async function saveCredential<T extends CredentialType>(name: string, type: T, value: CredentialMap[T]): Promise<void> {
+export async function saveCredential<T extends Credential['type']>(name: string, type: T, value: CredentialMap[T]): Promise<void> {
     await db.insert(credentials).values({ name, type, value })
 }
 
@@ -22,7 +20,7 @@ export async function getCredentials(): Promise<Credential[] | undefined> {
 
     if (!rows) return undefined
 
-    return rows
+    return CredentialMapSchema.parse(rows)
 }
 
 export async function deleteCredential(name: string): Promise<void> {

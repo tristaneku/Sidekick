@@ -1,13 +1,21 @@
 import * as z from 'zod'
 
-export const CredentialMapSchema = z.object({
-    telegram: z.object({
-        bot_token: z.string(),
+export const CredentialSchema = z.union([
+    z.object({
+        name: z.string(),
+        type: z.literal('telegram'),
+        value: z.object({
+            bot_token: z.string(),
+        }),
     }),
 
-    llm_service: z.object({
-        api_key: z.string(),
+    z.object({
+        name: z.string(),
+        type: z.literal('llm_service'),
+        value: z.object({
+            api_key: z.string(),
+        }),
     }),
-})
+])
 
-export type CredentialMap = z.infer<typeof CredentialMapSchema>
+export type Credential = z.infer<typeof CredentialSchema>
