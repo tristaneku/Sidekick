@@ -1,18 +1,33 @@
 import { Bot } from 'npm:grammy@1.46.0'
-import type { TelegramApiPropertries } from '@/channels/telegram/models.ts'
+import type { TelegramApiPropertries } from './models.ts'
+import { getCredential } from '@/credentials/service.ts'
 
 export class TelegramApi {
-    bot: Bot
-    userId?: number[]
+    propertries: TelegramApiPropertries
+
+    bot?: Bot
+    trustedUids?: number[]
 
     constructor(propertries: TelegramApiPropertries) {
-        this.bot = new Bot(propertries.botToken)
+        this.propertries = propertries
 
-        this.bot.on('message', ({ message }) => {
-            if (!message.text) return
+        this.initialize()
+    }
 
-            propertries.messageSidekickCallback(message.text)
-        })
+    async initialize() {
+        const credential = await getCredential('telegram', this.propertries.botToken)
+
+        const botToken = credential?.value.bot_token
+
+        if (!botToken) {
+            throw new Error("Couldn't fetch bot token")
+        }
+
+        this.bot = new Bot(botToken)
+
+        this.bot.on('message', (ctx) => {})
+
+        this.bot.start()
     }
 
     addTrustedUser(uid: number) {
