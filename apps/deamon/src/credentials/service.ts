@@ -3,8 +3,8 @@ import { db } from '@/db/service.ts'
 import { eq } from 'drizzle-orm/sql/expressions'
 import { type Credential, CredentialSchema } from '@/credentials/schema.ts'
 
-export async function saveCredential<T extends Credential['type']>(name: string, type: T, value: CredentialMap[T]): Promise<void> {
-    await db.insert(credentials).values({ name, type, value })
+export async function saveCredential(propertries: Credential): Promise<void> {
+    await db.insert(credentials).values(propertries)
 }
 
 export async function getCredential<T extends Credential['type']>(
