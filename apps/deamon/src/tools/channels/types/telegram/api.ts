@@ -16,7 +16,6 @@ export class TelegramApi {
 
     async initialize() {
         const credential = await getCredential('telegram', this.propertries.botToken)
-
         const botToken = credential?.value.bot_token
 
         if (!botToken) {

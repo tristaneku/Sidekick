@@ -21,10 +21,11 @@ export function getAvailableModels(provider: AvailableProviders) {
 
 export async function getLanguageModel(provider: AvailableProviders, model: string, credential: string) {
     const result = await getCredential('llm_service', credential)
+    const apiKey = result?.value.api_key
 
-    if (!result) {
+    if (!apiKey) {
         throw new Error("Credential couldn't fetched")
     }
 
-    return getProvider(provider, result.api_key)(model)
+    return getProvider(provider, apiKey)(model)
 }
