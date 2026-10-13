@@ -1,5 +1,5 @@
-import { Bot } from 'npm:grammy@1.46.0'
 import type { TelegramApiPropertries } from './models.ts'
+import { Bot } from 'npm:grammy@1.46.0'
 import { getCredential } from '@/credentials/service.ts'
 
 export class TelegramApi {
@@ -24,7 +24,9 @@ export class TelegramApi {
 
         this.bot = new Bot(botToken)
 
-        this.bot.on('message', (ctx) => {})
+        this.bot.on('message', (ctx) => {
+            this.propertries.messageSidekickCallback()
+        })
 
         this.bot.start()
     }
