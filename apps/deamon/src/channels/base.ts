@@ -14,16 +14,11 @@ export abstract class Channel {
     }
 
     async initalize() {
-        const result = await db
-            .select({ config: channels.config })
-            .from(channels)
-            .where(eq(channels.name, this.name))
-
         this.config = result[0]
     }
 
-    abstract sendMessage(text: string): Promise<void>
-
     async updateConfig() {
     }
+
+    abstract sendMessage(text: string): Promise<void>
 }
