@@ -1,21 +1,24 @@
-import { Bot } from 'npm:grammy@1.46.0'
+import type { TelegramApiProperties } from '@/channels/types/telegram/models.ts'
+import type { MessageSidekick } from '@/sidekick/models.ts'
 import { getCredential } from '@/credentials/service.ts'
-import type { TelegramChannelApiProperties } from '@/channels/types/telegram/models.ts'
+import { Bot } from 'npm:grammy@1.46.0'
 
-export class TelegramChannelApi {
-    propertries: TelegramChannelApiProperties
+export class TelegramApi {
+    messageSidekick: MessageSidekick
+    credential: string
 
     bot?: Bot
     trustedUids?: number[]
 
-    constructor(propertries: TelegramChannelApiProperties) {
-        this.propertries = propertries
+    constructor({ credential, messageSidekick }: TelegramApiProperties) {
+        this.messageSidekick = messageSidekick
+        this.credential = credential
 
         this.initialize()
     }
 
     async initialize() {
-        const credential = await getCredential('telegram', this.propertries.botToken)
+        const credential = await getCredential('telegram', this.credential)
         const botToken = credential?.value.bot_token
 
         if (!botToken) {
@@ -24,11 +27,15 @@ export class TelegramChannelApi {
 
         this.bot = new Bot(botToken)
 
-        this.bot.on('message', (ctx) => {
-            this.propertries.messageSidekickCallback()
+        this.bot.on('message', async ({ message }) => {
+            if (!message.text) return
+            await this.messageSidekick({ role: 'user', content: message.text })
         })
 
         this.bot.start()
+    }
+
+    sendMessage() {
     }
 
     addTrustedUser(uid: number) {

@@ -1,5 +1,6 @@
-import type { ModelMessage } from 'ai'
+import type { MessageSidekick } from '@/sidekick/models.ts'
 
-export interface TelegramChannelApiProperties {
-    messageSidekickCallback: (message: ModelMessage) => void
+export interface TelegramApiProperties {
+    credential: string
+    messageSidekick: MessageSidekick
 }
