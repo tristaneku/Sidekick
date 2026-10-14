@@ -4,8 +4,8 @@ import { getCredential } from '@/credentials/service.ts'
 import { Bot } from 'npm:grammy@1.46.0'
 
 export class TelegramApi {
-    messageSidekick: MessageSidekick
-    credential: string
+    messageSidekick
+    credential
 
     bot?: Bot
     trustedUids?: number[]

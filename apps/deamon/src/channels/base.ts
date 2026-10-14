@@ -1,9 +1,14 @@
-import type { MessageSidekick } from '@/sidekick/models.ts'
+import type { ChannelProperties } from '@/channels/models.ts'
 
 export abstract class Channel {
-    messageSidekick: MessageSidekick
+    messageSidekick
+    config
 
-    constructor(messageSidekick: MessageSidekick) {
+    constructor({ messageSidekick, config }: ChannelProperties) {
         this.messageSidekick = messageSidekick
+        this.config = config
+    }
+
+    updateConfig() {
     }
 }
