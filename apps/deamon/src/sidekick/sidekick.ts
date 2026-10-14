@@ -1,4 +1,4 @@
-import type { SidekickPropetries } from '@/sidekick/models.ts'
+import type { MessageSidekick, SidekickPropetries } from '@/sidekick/models.ts'
 import type { LanguageModelInstance } from '@/ai/models.ts'
 import type { ModelMessage } from 'ai'
 import { getLanguageModel } from '@/ai/service.ts'
@@ -22,8 +22,6 @@ export class Sidekick {
         const { llmProvider, llmModel, llmCredential } = this.propetries
 
         this.languageModel = await getLanguageModel(llmProvider, llmModel, llmCredential)
-
-        await this.sendMessage('Whats up?')
     }
 
     private pushMessage(message: ModelMessage) {
@@ -59,8 +57,8 @@ export class Sidekick {
         console.log(this.messages)
     }
 
-    async sendMessage(message: string) {
-        this.pushMessage({ role: 'user', content: message })
+    async sendMessage(message: ModelMessage) {
+        this.pushMessage(message)
         await this.triggerResponse()
     }
 }

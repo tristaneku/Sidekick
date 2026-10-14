@@ -1,7 +1,9 @@
-export abstract class Channel {
-    constructor() {
-    }
+import type { MessageSidekick } from '@/sidekick/models.ts'
 
-    messageSidekick() {
+export abstract class Channel {
+    messageSidekick: MessageSidekick
+
+    constructor(messageSidekick: MessageSidekick) {
+        this.messageSidekick = messageSidekick
     }
 }

@@ -1,14 +1,14 @@
-import type { TelegramApiPropertries } from './models.ts'
 import { Bot } from 'npm:grammy@1.46.0'
 import { getCredential } from '@/credentials/service.ts'
+import type { TelegramChannelApiProperties } from '@/channels/types/telegram/models.ts'
 
-export class TelegramApi {
-    propertries: TelegramApiPropertries
+export class TelegramChannelApi {
+    propertries: TelegramChannelApiProperties
 
     bot?: Bot
     trustedUids?: number[]
 
-    constructor(propertries: TelegramApiPropertries) {
+    constructor(propertries: TelegramChannelApiProperties) {
         this.propertries = propertries
 
         this.initialize()

@@ -1,4 +1,5 @@
-export interface TelegramApiPropertries {
-    botToken: string
-    messageSidekickCallback: (message: string) => void
+import type { ModelMessage } from 'ai'
+
+export interface TelegramChannelApiProperties {
+    messageSidekickCallback: (message: ModelMessage) => void
 }
