@@ -9,5 +9,5 @@
 
 ## The open-source AI multi-agent framework.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Not functional yet. Still working on it.
